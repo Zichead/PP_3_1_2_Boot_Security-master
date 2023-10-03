@@ -1,18 +1,16 @@
 package ru.kata.spring.boot_security.demo.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.transaction.Transactional;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,14 +19,15 @@ public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
 
-    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder ;
 
 
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository) {
+    public UserServiceImp(UserRepository userRepository, @Lazy PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
 
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User findByUsername(String username) {
@@ -70,6 +69,23 @@ public class UserServiceImp implements UserService {
     @Transactional
     @Override
     public void updateUser(User user) {
+
+//        List<Role> upRoles = user.getRoles();
+//        User userForUpdate = findUserToID(user.getId());
+//        user.setName(userForUpdate.getName());
+//        user.setSurname(userForUpdate.getSurname());
+//        user.setEmail(userForUpdate.getEmail());
+//        user.setUsername(userForUpdate.getUsername());
+//        user.setRoles(upRoles);
+//        if (user.getPassword().equals(userForUpdate.getPassword())) {
+//            userRepository.save(user);
+//        } else {
+//            user.setPassword(passwordEncoder.encode(userForUpdate.getPassword()));
+//            userRepository.save(user);
+//        }
+//        userRepository.save(user);
+
+
         if (!user.getPassword().equals(findUserToID(user.getId()).getPassword())) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }

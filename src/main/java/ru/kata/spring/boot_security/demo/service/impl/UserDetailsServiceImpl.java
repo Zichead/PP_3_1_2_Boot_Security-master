@@ -13,7 +13,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> userInDb = Optional.ofNullable(userRepository.findByUsername(username)); //Ищем в БД юзера по имени с формы
+        Optional<User> userInDb = Optional.ofNullable(userRepository.findByUsername(username));
         if (userInDb.isEmpty()) {
             throw new UsernameNotFoundException("Пользователь с таким именем не найден.");
         }
