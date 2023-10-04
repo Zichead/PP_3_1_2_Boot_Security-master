@@ -7,16 +7,11 @@ import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import java.security.Principal;
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/user")
 public class UsersController {
 
-//    private static final String REDIRECT = "redirect:/users";
-
     private final UserService userService;
-
     public UsersController(UserService userService) {
         this.userService = userService;
     }
