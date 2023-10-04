@@ -36,6 +36,20 @@
 
     <br>
 
+
+    <div>
+    <p>
+        <label th:for="userRoles">Roles:
+            <input type="checkbox" name="roles"
+                   th:each="role : ${userRoles}"
+                   th:text="${role.name}"
+                   th:value="${role.id}"
+                   th:field="*{roles}"
+            />
+        </label>
+    </p>
+    </div>
+
     <input type="submit" value="Update User">
     <br>
 </form>

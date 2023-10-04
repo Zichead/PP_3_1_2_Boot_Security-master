@@ -32,12 +32,10 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        //Создали роль юзер
         Role userRole = new Role();
         userRole.setName("ROLE_USER");
         roleRepository.save(userRole);
 
-        //Создали роль админ
         Role adminRole = new Role();
         adminRole.setName("ROLE_ADMIN");
         roleRepository.save(adminRole);
@@ -47,36 +45,36 @@ public class DatabaseInitializer implements ApplicationListener<ContextRefreshed
 
         User admin = new User();
         admin.setUsername("admin");
-        admin.setName("lfksdf");
-        admin.setEmail("sdkfh@gmai.com");
-        admin.setSurname("dfksdfk");
+        admin.setName("AL");
+        admin.setEmail("alfh@gmail.com");
+        admin.setSurname("Pup");
         admin.setPassword(passwordEncoder.encode("admin"));
         admin.setRoles(adminRoles);
         userRepository.save(admin);
 
         User user = new User();
         user.setUsername("user");
-        user.setName("lfksdf");
-        user.setEmail("sdkfh@gmai.com");
-        user.setSurname("dfksdfk");
+        user.setName("Ev");
+        user.setEmail("evfh@gmail.com");
+        user.setSurname("Pet");
         user.setPassword(passwordEncoder.encode("user"));
         user.setRoles(userRoles);
         userRepository.save(user);
 
         User user2 = new User();
         user2.setUsername("user2");
-        user2.setName("lfksdf");
-        user2.setEmail("sdkfh@gmai.com");
-        user2.setSurname("dfksdfk");
+        user2.setName("Ser");
+        user2.setEmail("ser@gmail.com");
+        user2.setSurname("Iv");
         user2.setPassword(passwordEncoder.encode("user2"));
         user2.setRoles(userRoles);
         userRepository.save(user2);
 
         User user3 = new User();
         user3.setUsername("user3");
-        user3.setName("lfksdf");
-        user3.setEmail("sdkfh@gmai.com");
-        user3.setSurname("dfksdfk");
+        user3.setName("Nik");
+        user3.setEmail("nikfh@gmail.com");
+        user3.setSurname("Leg");
         user3.setPassword(passwordEncoder.encode("user3"));
         user3.setRoles(userRoles);
         userRepository.save(user3);

@@ -26,7 +26,6 @@ public class UserServiceImp implements UserService {
     @Autowired
     public UserServiceImp(UserRepository userRepository, @Lazy PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -69,22 +68,6 @@ public class UserServiceImp implements UserService {
     @Transactional
     @Override
     public void updateUser(User user) {
-
-//        List<Role> upRoles = user.getRoles();
-//        User userForUpdate = findUserToID(user.getId());
-//        user.setName(userForUpdate.getName());
-//        user.setSurname(userForUpdate.getSurname());
-//        user.setEmail(userForUpdate.getEmail());
-//        user.setUsername(userForUpdate.getUsername());
-//        user.setRoles(upRoles);
-//        if (user.getPassword().equals(userForUpdate.getPassword())) {
-//            userRepository.save(user);
-//        } else {
-//            user.setPassword(passwordEncoder.encode(userForUpdate.getPassword()));
-//            userRepository.save(user);
-//        }
-//        userRepository.save(user);
-
 
         if (!user.getPassword().equals(findUserToID(user.getId()).getPassword())) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));

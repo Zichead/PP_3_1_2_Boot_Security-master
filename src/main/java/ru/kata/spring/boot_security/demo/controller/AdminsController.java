@@ -46,8 +46,9 @@ public class AdminsController {
     }
 
     @PostMapping("")
-    public String create(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+    public String create(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()){
+            model.addAttribute("userRoles", roleService.allRoles());
             return "new";
         }
         userService.add(user);
@@ -63,9 +64,9 @@ public class AdminsController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("userRoles", roleService.allRoles());
             return "edit";
         }
-        model.addAttribute("userRoles", roleService.allRoles());
         userService.updateUser(user);
         return REDIRECT;
     }
