@@ -9,14 +9,12 @@
 <h1></h1>
 <table border="1">
     <caption>Users</caption>
-
     <thead>
     <tr>
         <th scope="col">id</th>
         <th scope="col">name</th>
         <th scope="col">surname</th>
         <th scope="col">email</th>
-
     </tr>
     </thead>
     <tbody>
@@ -26,22 +24,13 @@
         <td th:text="${user.surname}"/>
         <td th:text="${user.email}"/>
         <td th:text="${user.roles}"/>
-
     </tr>
-
     </tbody>
-
 </table>
-
-
 <br/>
 <a href="/logout" class="button">Logout</a>
 <hr/>
-
 <a href="/admin/new" class="button">Create new User</a>
-
 <br>
-
-
 </body>
 </html>

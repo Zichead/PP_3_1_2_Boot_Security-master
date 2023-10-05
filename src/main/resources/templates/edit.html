@@ -18,13 +18,11 @@
     <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
 
     <br>
-
     <label for="surname">Surname</label>
     <input type="text" th:field="*{surname}" id="surname"/>
     <div style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</div>
 
     <br>
-
     <label for="email">Email</label>
     <input type="text" th:field="*{email}" id="email"/>
     <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
@@ -35,8 +33,6 @@
     <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
 
     <br>
-
-
     <div>
     <p>
         <label th:for="userRoles">Roles:
@@ -53,10 +49,8 @@
     <input type="submit" value="Update User">
     <br>
 </form>
-
 <br/>
 
 <a href="/admin" class="button">Return to users table</a>
-
 </body>
 </html>
